@@ -99,7 +99,7 @@ local function ptu(self, ptu_update_func)
   local requestId = self.hmiConnection:SendRequest("SDL.GetURLS", { service = 7 })
   EXPECT_HMIRESPONSE(requestId)
   :Do(function()
-      self.hmiConnection:SendNotification("BasicCommunication.OnSystemRequest", { requestType = "PROPRIETARY", fileName = pts_file_name })
+      self.hmiConnection:SendNotification("BasicCommunication.OnSystemRequest", { requestType = "PROPRIETARY", fileName = policy_file_path .. "/" .. pts_file_name })
       getPTUFromPTS(ptu_table)
       updatePTU(ptu_table)
       if ptu_update_func then
